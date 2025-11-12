@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "maren:block/lugter_planks",
+    "side": "maren:block/lugter_planks",
+    "top": "maren:block/lugter_planks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "maren:block/lugter_slab"
+    },
+    "type=double": {
+      "model": "maren:block/lugter_planks"
+    },
+    "type=top": {
+      "model": "maren:block/lugter_slab_top"
+    }
+  }
+}
