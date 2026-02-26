@@ -3,12 +3,12 @@ package net.dermif1.maren.datagen;
 import net.dermif1.maren.block.ModBlocks;
 import net.dermif1.maren.item.ModItems;
 import net.minecraft.advancements.*;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -51,6 +51,6 @@ public class ModAdvancementProvider implements AdvancementSubProvider {
         builder.requirements(AdvancementRequirements.allOf(List.of(trigger_name)));
         builder.rewards(AdvancementRewards.Builder.experience(experience));
 
-        builder.save(saver, ResourceLocation.fromNamespaceAndPath("maren", name));
+        builder.save(saver, Identifier.fromNamespaceAndPath("maren", name));
     }
 }

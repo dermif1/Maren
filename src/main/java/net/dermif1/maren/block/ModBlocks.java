@@ -58,7 +58,7 @@ public class ModBlocks {
     public static final DeferredBlock<PressurePlateBlock> LUGTER_PRESSURE_PLATE = registerBlock("lugter_pressure_plate",
             (properties) -> new PressurePlateBlock(BlockSetType.OAK,properties.strength(2f)));
     public static final DeferredBlock<ButtonBlock> LUGTER_BUTTON = registerBlock("lugter_button",
-            (properties) -> new ButtonBlock(BlockSetType.OAK, 30,properties.strength(2f).noCollission()));
+            (properties) -> new ButtonBlock(BlockSetType.OAK, 30,properties.strength(2f).noCollision()));
 
     public static final DeferredBlock<FenceBlock> LUGTER_FENCE = registerBlock("lugter_fence",
             (properties) -> new FenceBlock(properties.strength(2f)));
