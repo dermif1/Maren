@@ -48,6 +48,7 @@ neoForge {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArgument "--username=dermif1"
         }
 
         server {
@@ -133,6 +134,7 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    implementation "net.neoforged:neoforge:21.11.38-beta"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

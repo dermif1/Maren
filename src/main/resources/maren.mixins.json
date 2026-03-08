@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.dermif1.maren.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EnchantingTableBlockMixin",
+    "BlockBehaviourMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

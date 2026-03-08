@@ -14,6 +14,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -25,6 +26,12 @@ public class DataGenerators {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider =  event.getLookupProvider();
+        Path projectDir = event.getGenerator().getPackOutput()
+                .getOutputFolder().getParent()  // build/
+                .getParent();                   // корінь проекту
+
+        Path mixinDir = projectDir
+                .resolve("main/java/net/dermif1/maren/mixin");
 
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
@@ -38,14 +45,29 @@ public class DataGenerators {
         generator.addProvider(true, new AdvancementProvider(packOutput, lookupProvider, List.of(new ModAdvancementProvider())));
         generator.addProvider(true, new ModDataMapProvider(packOutput, lookupProvider));
 
+        generator.addProvider(true, new ModDatapackProvider(packOutput, lookupProvider));
+
+        generator.addProvider(true, new MixinJsonProvider(packOutput, Maren.MOD_ID, "net.dermif1.maren.mixin", mixinDir));
+
     }
     @SubscribeEvent
     public static void gatherClientData(GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        Path projectDir = event.getGenerator().getPackOutput()
+                .getOutputFolder().getParent()  // build/
+                .getParent();                   // корінь проекту
+
+        Path mixinDir = projectDir
+                .resolve("main/java/net/dermif1/maren/mixin");
 
         generator.addProvider(true, new ModModelProvider(packOutput));
+
+
+        generator.addProvider(true, new ModDatapackProvider(packOutput, lookupProvider));
+
+        generator.addProvider(true, new MixinJsonProvider(packOutput, Maren.MOD_ID, "net.dermif1.maren.mixin", mixinDir));
 
         /*LANGUAGES*/
         generator.addProvider(true, new en_us(packOutput));

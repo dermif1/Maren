@@ -17,6 +17,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.ANARCHY.get());
+        dropSelf(ModBlocks.GEYSER.get());
         dropSelf(ModBlocks.LUGTER_PLANKS.get());
         dropSelf(ModBlocks.LUGTER_TRAPDOOR.get());
         dropSelf(ModBlocks.LUGTER_FENCE.get());

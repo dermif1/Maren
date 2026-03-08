@@ -2,25 +2,18 @@ package net.dermif1.maren;
 
 import net.dermif1.maren.block.ModBlocks;
 import net.dermif1.maren.block.entity.ModBlockEntities;
+import net.dermif1.maren.enchantment.ModEnchantmentEffects;
 import net.dermif1.maren.entity.ModEntities;
 import net.dermif1.maren.item.ModCreativeModeTabs;
 import net.dermif1.maren.item.ModItems;
+import net.dermif1.maren.particle.ModParticles;
+import net.dermif1.maren.sound.ModSounds;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -28,12 +21,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Maren.MOD_ID)
@@ -55,18 +43,31 @@ public class Maren {
         NeoForge.EVENT_BUS.register(this);
 
         ModCreativeModeTabs.register(modEventBus);
-
         ModItems.register(modEventBus);
+
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModEntities.register(modEventBus);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        ModEntities.register(modEventBus);
+        ModParticles.register(modEventBus);
+        ModSounds.register(modEventBus);
+        ModEnchantmentEffects.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
+
+//    @SubscribeEvent
+//    public static void replaceVanillaBlock(RegisterEvent event) { // MinecraftBlocks newBlock, Block oldBlock
+//        if (event.getRegistryKey().equals(Registries.BLOCK)) {
+////            event.register(Registries.BLOCK,
+////                    Identifier.withDefaultNamespace(oldBlock.getName().toString()),
+////                    () -> newBlock::new);
+//            event.register(Registries.BLOCK,
+//                    Identifier.withDefaultNamespace("enchanting_table"),
+//                    () -> new EnchantingTableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ENCHANTING_TABLE)));
+//        }
+//    }
 
     private void commonSetup(FMLCommonSetupEvent event) {
         // Some common setup code
@@ -79,10 +80,6 @@ public class Maren {
         LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
 
         Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
-    }
-
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

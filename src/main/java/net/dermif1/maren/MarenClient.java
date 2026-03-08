@@ -3,6 +3,9 @@ package net.dermif1.maren;
 import net.dermif1.maren.block.ModBlocks;
 import net.dermif1.maren.block.entity.ModBlockEntities;
 import net.dermif1.maren.block.entity.renderer.AnarchyBlockEntityRenderer;
+import net.dermif1.maren.mixin.entity.render.EnchantingTableBlockEntityRender;
+import net.dermif1.maren.particle.ModParticles;
+import net.dermif1.maren.particle.SoulParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
@@ -13,6 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -36,8 +40,15 @@ public class MarenClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LUGTER_DOOR.get(), ChunkSectionLayer.CUTOUT);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LUGTER_TRAPDOOR.get(), ChunkSectionLayer.CUTOUT);
     }
+
+    @SubscribeEvent
+    public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ModParticles.SOUL_PARTICLES.get(), SoulParticle.Provider::new);
+    }
+
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.ANARCHY_BE.get(), AnarchyBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.ENCHANTING_TABLE_BE.get(), EnchantingTableBlockEntityRender::new);
     }
 }

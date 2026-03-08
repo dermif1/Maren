@@ -22,6 +22,8 @@ public class ModCreativeModeTabs {
                             (itemDisplayParameters, output) -> {
                                 output.accept(ModItems.SOUL_FRAGMENT);
                                 output.accept(ModBlocks.ANARCHY);
+                                output.accept(ModBlocks.GEYSER);
+//                                output.accept(MinecraftBlocks.ENCHANTING_TABLE);
                                 /*output.accept(ModBlocks.LUGTER_LOG);
                                 output.accept(ModBlocks.STRIPPED_LUGTER_LOG);*/
                                 output.accept(ModBlocks.LUGTER_PLANKS);

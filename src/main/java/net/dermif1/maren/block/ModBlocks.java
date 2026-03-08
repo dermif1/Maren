@@ -2,6 +2,7 @@ package net.dermif1.maren.block;
 
 import net.dermif1.maren.Maren;
 import net.dermif1.maren.block.custom.AnarchyBlock;
+import net.dermif1.maren.block.custom.GeyserBlock;
 import net.dermif1.maren.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -74,6 +75,9 @@ public class ModBlocks {
             (properties) -> new AnarchyBlock(properties.noOcclusion()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE_BRICKS)));
 
+    public static final DeferredBlock<Block> GEYSER = registerBlock("geyser",
+            (properties) -> new GeyserBlock(properties.strength(3).sound(SoundType.ROOTED_DIRT)));
+
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);
@@ -82,7 +86,7 @@ public class ModBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS.registerItem(name, (properties) -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
+        ModItems.ITEMS.registerSimpleBlockItem(name, block);
     }
 
     public static void register(IEventBus eventBus) {

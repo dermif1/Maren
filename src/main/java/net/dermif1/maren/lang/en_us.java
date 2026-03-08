@@ -2,6 +2,7 @@ package net.dermif1.maren.lang;
 
 import net.dermif1.maren.Maren;
 import net.dermif1.maren.block.ModBlocks;
+import net.dermif1.maren.enchantment.ModEnchantments;
 import net.dermif1.maren.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -13,11 +14,14 @@ public class en_us extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        // CREATIVE TABS
         add("creativetab.maren.maren_tab", "Maren Tab");
 
+        // BLOCKS
         add(ModBlocks.ANARCHY.get(), "Anarchy");
         /*add(ModBlocks.LUGTER_LOG.get(), "Lugter log");
         add(ModBlocks.STRIPPED_LUGTER_LOG.get(), "Stripped lugter log");*/
+        add(ModBlocks.GEYSER.get(), "Geyser");
         add(ModBlocks.LUGTER_PLANKS.get(), "Lugter planks");
         add(ModBlocks.LUGTER_BUTTON.get(), "Lugter button");
         add(ModBlocks.LUGTER_DOOR.get(), "Lugter door");
@@ -28,6 +32,10 @@ public class en_us extends LanguageProvider {
         add(ModBlocks.LUGTER_STAIRS.get(), "Lugter stairs");
         add(ModBlocks.LUGTER_TRAPDOOR.get(), "Lugter trapdoor");
 
+        // ITEMS
         add(ModItems.SOUL_FRAGMENT.get(), "Soul fragment");
+
+        // ENCHANTMENTS
+        add("enchantment."+ModEnchantments.ABRACADABRA.identifier().toLanguageKey(), "Abracadabra");
     }
 }

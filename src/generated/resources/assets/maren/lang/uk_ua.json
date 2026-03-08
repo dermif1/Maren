@@ -1,5 +1,6 @@
 {
   "block.maren.anarchy": "Анарх",
+  "block.maren.geyser": "Гейзер",
   "block.maren.lugter_button": "Люктерова кнопка",
   "block.maren.lugter_door": "Люктерові двері",
   "block.maren.lugter_fence": "Люктерова огорожа",
@@ -10,5 +11,6 @@
   "block.maren.lugter_stairs": "Люктерові сходи",
   "block.maren.lugter_trapdoor": "Люктеровий люк",
   "creativetab.maren.maren_tab": "Вкладка Maren",
+  "enchantment.maren.abracadabra": "Абрадкадабра",
   "item.maren.soul_fragment": "Фрагмент души"
 }

@@ -2,6 +2,7 @@ package net.dermif1.maren.lang;
 
 import net.dermif1.maren.Maren;
 import net.dermif1.maren.block.ModBlocks;
+import net.dermif1.maren.enchantment.ModEnchantments;
 import net.dermif1.maren.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -13,11 +14,14 @@ public class uk_ua extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        // CREATIVE TABS
         add("creativetab.maren.maren_tab", "Вкладка Maren");
 
+        // BLOCKS
         add(ModBlocks.ANARCHY.get(), "Анарх");
         /*add(ModBlocks.LUGTER_LOG.get(), "Люктерове дерево");
         add(ModBlocks.STRIPPED_LUGTER_LOG.get(), "Обтесене люктерове дерево");*/
+        add(ModBlocks.GEYSER.get(), "Гейзер");
         add(ModBlocks.LUGTER_PLANKS.get(), "Люктерові дошки");
         add(ModBlocks.LUGTER_BUTTON.get(), "Люктерова кнопка");
         add(ModBlocks.LUGTER_DOOR.get(), "Люктерові двері");
@@ -28,6 +32,10 @@ public class uk_ua extends LanguageProvider {
         add(ModBlocks.LUGTER_STAIRS.get(), "Люктерові сходи");
         add(ModBlocks.LUGTER_TRAPDOOR.get(), "Люктеровий люк");
 
+        // ITEMS
         add(ModItems.SOUL_FRAGMENT.get(), "Фрагмент души");
+
+        // ENCHANTMENTS
+        add("enchantment."+ModEnchantments.ABRACADABRA.identifier().toLanguageKey(), "Абрадкадабра");
     }
 }

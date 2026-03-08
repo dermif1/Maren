@@ -39,11 +39,14 @@ public class ModModelProvider extends ModelProvider {
 
     @Override
     protected Stream<? extends Holder<Block>> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().filter(x -> !x.is(ModBlocks.ANARCHY));
+        return ModBlocks.BLOCKS.getEntries().stream().filter(x -> !x.is(ModBlocks.ANARCHY) && !x.is(ModBlocks.GEYSER));
     }
 
-    @Override
-    protected Stream<? extends Holder<Item>> getKnownItems() {
-        return ModItems.ITEMS.getEntries().stream().filter(x -> x.get() != ModBlocks.ANARCHY.asItem());
-    }
+
+    // !!!DON`T TOUCH!!!
+    // IT`S BREAKS 3D MODEL OF ALL ITEMS!
+    //@Override
+    //protected Stream<? extends Holder<Item>> getKnownItems() {
+    //    return ModItems.ITEMS.getEntries().stream().filter(x -> x.get() != ModBlocks.ANARCHY.asItem() && x.get() != ModBlocks.GEYSER.asItem());
+    //}
 }
